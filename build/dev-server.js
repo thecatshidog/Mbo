@@ -9,9 +9,7 @@ if(!process.env.NODE_ENV) {
     process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-var webpackConfig = process.env.NODE_ENV === 'development'
-    ? require('./webpack.dev.conf.js')
-    : require('./webpack.prod.conf.js')
+var webpackConfig = require('./webpack.dev.conf.js')
 
 var url = 'localhost:' + config.dev.port
 
@@ -22,12 +20,7 @@ var proxy = [{
     secure: true
 }]
 
-
-console.log('====================================');
-console.log(webpackConfig.output.publicPath);
-console.log('====================================');
 var server = new webpackDevServer(webpack(webpackConfig), {
-    contentBase: 'build/',
     publicPath: webpackConfig.output.publicPath,
     hot: true,
     stats: {
@@ -35,9 +28,6 @@ var server = new webpackDevServer(webpack(webpackConfig), {
     },
     proxy
 })
-console.log('====================================');
-console.log('开始了');
-console.log('====================================');
 
 server.app.get('*', function(req, res) {
     res.sendFile(__dirname + 'index.html')
