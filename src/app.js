@@ -1,18 +1,20 @@
-import './a.scss';
+import './styles/app.scss';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import Routes from './routes'
 
+import Hello from './components/Hello';
 class App extends Component {
     constructor (props) {
         super(props)
-        this.state = {
-            a: 1
-        }
     }
     
     render() {
         return (
-            <h1>Hello Pig</h1>
+            <div>
+                <Hello/>
+                <Routes/>
+            </div>
         )
     }
 }

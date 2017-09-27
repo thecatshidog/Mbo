@@ -6,12 +6,6 @@ var config = require('../config')
  */
 function assetsPath(_path) {
     var assetsSubDirectory = config.build.assetsSubDirectory
-    
-    console.log('====================================');
-    console.log(process.env.NODE_ENV);
-    console.log(process.env.NODE_ENV === process.env.NODE_ENV)
-    console.log(assetsSubDirectory)
-    console.log('====================================');
     return path.posix.join(assetsSubDirectory, _path)
 }
 

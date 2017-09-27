@@ -3,7 +3,6 @@ var utils = require('./utils')
 var config = require('../config')
 // 自助生成html，因为有hash这样的值存在，所以可以减少麻烦
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-// console.log(path.resolve(__dirname, './src/app.js'))
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -52,7 +51,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './public/index.html'
         })
     ]
 }

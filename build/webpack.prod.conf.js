@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var config = require('../config')
-var webpackBaseConfig = require('./webpack.base.js')
+var webpackBaseConfig = require('./webpack.base.conf.js')
 var merge = require('webpack-merge')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
@@ -10,11 +10,6 @@ var env = process.env.NODE_ENV === 'testing'
     ? require('../config/test.env')
     : config.build.env
 process.env.NODE_ENV = env.NODE_ENV
-
-// console.log('====================================');
-// console.log(env)
-// console.log(utils.assetsPath('js/bundle.[hash].js'));
-// console.log('====================================');
 
 module.exports = merge(webpackBaseConfig, {
     module: {
@@ -30,7 +25,8 @@ module.exports = merge(webpackBaseConfig, {
     devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/bundle.[hash].js')
+        filename: utils.assetsPath('js/bundle.[hash].js'),
+        publicPath: config.build.assetsPublicPath
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
