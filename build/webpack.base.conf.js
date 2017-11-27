@@ -17,7 +17,7 @@ const vendor = [
 
 module.exports = {
     entry: {
-        app: './src/app.js',
+        app: './src/app.jsx',
         vendor: vendor,
     },
     output: {

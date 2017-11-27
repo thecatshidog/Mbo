@@ -9,7 +9,7 @@ module.exports = merge(webpackBaseConfig, {
         app: [
                 `webpack-dev-server/client?http://${config.dev.host}:${config.dev.port}`,
                 'webpack/hot/dev-server',
-                './src/app.js',
+                './src/app.jsx',
             ]
     },
     module: {

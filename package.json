@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "lint": "./node_modules/.bin/eslint src/*.js src/*.jsx src/**/*.js src/**/*.jsx src/**/**/*.js src/**/**/*.jsx"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,11 @@
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
@@ -39,6 +45,8 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
