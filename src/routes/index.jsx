@@ -5,7 +5,6 @@ import Route1 from '../pages/Route1/'
 import Route2 from '../pages/Route2/'
 import Name1 from '../pages/Route2/name1/'
 import Name2 from '../pages/Route2/name2/'
-
 const routes = [
   {
     path: '/route1',

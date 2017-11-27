@@ -73,3 +73,5 @@ modules: 指定模块类型，譬如AMD，CMD，CommonJS，这里讲modules设�
 2、[Babel polyfill 知多少](https://zhuanlan.zhihu.com/p/29058936)
 
 3、[devServer配置手册](https://doc.webpack-china.org/configuration/dev-server/#devserver-contentbase)
+
+4、[webpack：从入门到真实项目配置](https://juejin.im/post/59bb37fa6fb9a00a554f89d2)

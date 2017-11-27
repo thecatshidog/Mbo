@@ -25,14 +25,10 @@ module.exports = merge(webpackBaseConfig, {
     devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/bundle.[hash].js'),
+        filename: utils.assetsPath('js/[name].[hash].js'),
         publicPath: config.build.assetsPublicPath
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: utils.assetsPath('js/vendor.[hash].js')
-        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
