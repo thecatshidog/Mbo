@@ -1,0 +1,28 @@
+.name-page {
+  .wrapper {
+    position: relative;
+    top: 10px;
+    bottom: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+  }
+  .box {
+    // position: absolute;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    margin-left: -4px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: darken(#ccc, 52%);
+    &:before {
+      border-radius: 100%;
+      content: ' ';
+      display: block;
+      height: 24px;
+      margin: -8px auto auto -8px;
+      width: 24px;
+    }
+  }
+}

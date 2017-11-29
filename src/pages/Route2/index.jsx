@@ -31,7 +31,7 @@ export default class Route2 extends Component {
 Route2.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string,
-    component: PropTypes.element,
+    component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
     routes: PropTypes.any,
   })).isRequired,
 };
