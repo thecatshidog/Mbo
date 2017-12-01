@@ -25,6 +25,11 @@ class Name1 extends Component {
     this.onBottomLeftDrag = this.onBottomLeftDrag.bind(this);
   }
 
+  componentDidMount () {
+    console.log('name1组件被创建完成');
+  }
+
+
   onBorderDrag( x, y ) {
     const { top, left, right, bottom } = this.state;
     const width = right - left;

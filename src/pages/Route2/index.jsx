@@ -8,6 +8,12 @@ export default class Route2 extends Component {
     super(props);
     this.state = {};
   }
+
+  componentDidMount() {
+    console.log('route2组件dom创建完成');
+  }
+
+
   render() {
     return (
       <div>

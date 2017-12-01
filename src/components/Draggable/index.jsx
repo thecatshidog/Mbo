@@ -170,7 +170,6 @@ export default class Draggable extends Component {
     const style = {
       transform: `translate( ${this.state.x}px, ${this.state.y}px)`,
     };
-
     if ( this.props.width || this.props.height ) {
       style.width = `${this.props.width}px`;
       style.height = `${this.props.height}px`;
