@@ -4,9 +4,16 @@
             "modules": false,
             "targets": {
                 "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-            }
+            },
+            "debug": true
         }],
         "react"
     ],
-    "plugins": ["transform-runtime", "transform-class-properties"]
+    "plugins": [
+      "transform-runtime",
+      "transform-class-properties",
+      "transform-object-rest-spread",
+      "transform-decorators-legacy",
+      "syntax-dynamic-import"
+    ]
 }

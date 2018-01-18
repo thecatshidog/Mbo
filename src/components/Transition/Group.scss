@@ -1,0 +1,10 @@
+.group {
+  width: 100%;
+  height: 100%;
+  .last_child__Bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+}

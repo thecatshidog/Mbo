@@ -1,0 +1,50 @@
+.animation-wrapper {
+  width: 200px;
+  height: 40px;
+  background-color: red;
+}
+.btn {
+  width: 40px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.box {
+  width: 100px;
+  height: 40px;
+  opacity: 0;
+  transition: 1000ms ease-in;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-active-enter {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-active-exit {
+  opacity: 0.01;
+  transition: opacity 800ms ease-in;
+}
+
+
+.fade-entered {
+  opacity: 1;
+  background-color: white;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease-in;
+}

@@ -26,3 +26,58 @@
     }
   }
 }
+
+
+
+@keyframes defaultNowPUSHMode {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes defaultBgPUSHMode {
+  from {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes defaultNowPOPMode {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+@keyframes defaultBgPOPMode {
+  from {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.translate-POP-now {
+  animation: defaultNowPOPMode .3s 1;
+  animation-fill-mode: both;
+}
+.translate-POP-bg {
+  animation: defaultBgPOPMode .3s 1;
+  animation-fill-mode: both;
+}
+.translate-PUSH-now {
+  animation: defaultNowPUSHMode .3s 1;
+  animation-fill-mode: both;
+}
+.translate-PUSH-bg {
+  animation: defaultBgPUSHMode .3s 1;
+  animation-fill-mode: both;
+}

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// import { CSSTransition } from 'react-transition-group';
+import Transition from '../../../components/Transition/Transition';
 import Draggable from '../../../components/Draggable';
+import routerProps from '../../../utils/routerProps';
 import './index.scss';
 
 class Name1 extends Component {
   static propTypes = {
     name: PropTypes.string,
+    ...routerProps,
   };
   static defaultProps = {
     name: 'name1'
@@ -26,9 +31,16 @@ class Name1 extends Component {
   }
 
   componentDidMount () {
-    console.log('name1组件被创建完成');
   }
 
+  componentDidUpdate() {
+  }
+
+  // onLeave = () => {
+  //   this.setState({
+  //     in: false,
+  //   })
+  // }
 
   onBorderDrag( x, y ) {
     const { top, left, right, bottom } = this.state;
@@ -50,26 +62,34 @@ class Name1 extends Component {
   render () {
     const { left, top, width, height } = this.state;
     return (
-      <div className="name-page">
-        <span>Name1</span>
-        <div className="wrapper">
-          <Draggable
-            onDrag={this.onBorderDrag}
-            onStop={this.onBottomLeftDrag}
-            x={left}
-            y={top}
-            width={width}
-            height={height}
-            bounds={{
-              top: 0,
-              left: 0,
-              bottom: 200,
-              right: 200,
-            }}
-            className="box"
-          />
+      <Transition>
+        <div
+          className="name-page"
+          ref={(node) => {
+            this.test = node
+          }}
+        >
+          <Link to="/route2/name1">Name1</Link>
+          <Link to="/route2/name2">name2</Link>
+          <div className="wrapper">
+            <Draggable
+              onDrag={this.onBorderDrag}
+              onStop={this.onBottomLeftDrag}
+              x={left}
+              y={top}
+              width={width}
+              height={height}
+              bounds={{
+                top: 0,
+                left: 0,
+                bottom: 200,
+                right: 200,
+              }}
+              className="box"
+            />
+          </div>
         </div>
-      </div>
+      </Transition>
     )
   }
 }

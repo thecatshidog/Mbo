@@ -38,7 +38,7 @@ var server = new webpackDevServer(webpack(webpackConfig), {
 })
 
 server.app.get('*', function(req, res) {
-    res.sendFile(__dirname + 'index.html')
+    res.sendFile(__dirname + '/index.html')
 })
 server.listen(config.dev.port, "localhost", function(req, res) {
     console.log('在localhost：' + config.dev.port + '开启服务,等待webpack开启')
