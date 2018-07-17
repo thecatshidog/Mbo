@@ -40,6 +40,10 @@ module.exports = merge(webpackBaseConfig, {
     },
     port: config.dev.port,
     open: true,
+    hot: {
+      client: internalIp.v4.sync(),
+      server: '0.0.0.0',
+    }
   },
   mode: 'development',
   module: {

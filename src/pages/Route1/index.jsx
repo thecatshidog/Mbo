@@ -37,21 +37,12 @@ class Route1 extends Component {
         data: res.data
       })
     });
-    const arr = [1, 2, 3];
-    const a = arr.find((item) => {
-      return item === 1;
-    });
-    console.log('====================================');
-    console.log(Array.prototype);
-    console.log('====================================');
   }
   toggleLoading = () => {
-    // console.log(this.props)
     this.setState({
       loading: !this.state.loading,
       in: !this.direction,
     })
-    // this.props.showLoading()
   }
   toggleEnterState = () => {
       this.setState({in: !this.state.in})

@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerReport = require('webpack-bundle-analyzer');
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
@@ -75,6 +76,7 @@ const webpackConfig = {
       new HtmlWebpackPlugin({
         template: './public/index.html'
       }),
+      new ModuleConcatenationPlugin(),
       new WorkboxPlugin.GenerateSW({
         // 这些选项帮助 ServiceWorkers 快速启用
         // 不允许遗留任何“旧的” ServiceWorkers

@@ -69,6 +69,20 @@ modules: 指定模块类型，譬如AMD，CMD，CommonJS，这里讲modules设�
 
 3、public文件夹中通过devServer的contentBase配置，可以拉到资源，一般配置index.html、favicon.ico、manifest.json。
 
+### TODO
+
+- [x] config在开发环境下注入
+- [x] 支持打包时，替换CDN地址
+- [x] 支持pre-commit,在git commit之前做代码lint检测
+- [x] 添加bin目录，支持CI自动部署方案脚本，在打包机器打包后分发,Docker打包部署
+- [x] 重构eslint的需求
+- [x] 重写README.md
+- [x] 重写PWA的支持
+- [x] 支持代码分割，添加代码分割解决方案
+- [x] 项目示例代码重写
+- [x] 重写redux的逻辑，使用rematch框架，探索新的写法
+- [x] 优化webpack打开页面，前期无法连接websocket的error提醒
+
 
 参考文章：
 
@@ -79,3 +93,7 @@ modules: 指定模块类型，譬如AMD，CMD，CommonJS，这里讲modules设�
 3、[devServer配置手册](https://doc.webpack-china.org/configuration/dev-server/#devserver-contentbase)
 
 4、[webpack：从入门到真实项目配置](https://juejin.im/post/59bb37fa6fb9a00a554f89d2)
+
+5、[webpack4简单入门](https://juejin.im/post/5ad75bf6f265da5059168b1d)
+
+6、[webpack4-react16-demo](https://github.com/durban89/webpack4-react16-reactrouter-demo)
