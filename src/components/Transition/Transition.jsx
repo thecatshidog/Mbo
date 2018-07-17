@@ -31,8 +31,23 @@ export default class Transition extends Component {
   constructor(props, context) {
     super(props, context);
     const { history } = context.router;
-    let historyPath = [];
+    const historyPathObj = get('historyPathObj') || {};
+    let historyPath = get('historyPath') || [];
+    console.log(!historyPathObj[history.location.pathname])
 
+    if (!get('historyPathObj') || !historyPathObj[history.location.pathname].toString()) {
+      historyPathObj[history.location.pathname] = 0;
+      console.log(get('historyPathObj'))
+    } else {
+      console.log(historyPathObj[history.location.pathname])
+    }
+
+    if (historyPathObj[history.location.pathname].toString()) {
+      historyPathObj[history.location.pathname]++;
+      console.log(Object.keys(get('historyPathObj')))
+    }
+    set('historyPathObj', historyPathObj);
+    console.log(history.action);
     if (!get('historyPath') || get('historyPath') && get('historyPath').length === 0) {
       historyPath = [];
       historyPath.push(history.location.pathname);
@@ -52,16 +67,9 @@ export default class Transition extends Component {
     }
     set('historyPath', historyPath);
     // 初始化背景dom，但是不显示，也不添加动画效果，只将两个dom的className合并,这个不使用的时候,跳转之后，就会显示背景组件
-    if (history.action === 'PUSH') {
-      this.context.changeShowChild(React.cloneElement(props.children, {
-        className: `${this.props.children.props.className} ${this.props.className} ${this.props.name}`,
-      }), false);
-    }
-    if (history.action === 'POP') {
-      this.context.changeShowChild(React.cloneElement(props.children, {
-        className: `${this.props.children.props.className} ${this.props.className} ${this.props.name}`,
-      }), false);
-    }
+    this.context.changeShowChild(React.cloneElement(props.children, {
+      className: `${this.props.children.props.className} ${this.props.className} ${this.props.name}`,
+    }), false);
 
     this.state = {
       animateClassName: this.props.name,

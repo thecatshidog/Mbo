@@ -1,12 +1,14 @@
-var webpack = require('webpack')
-var config = require('../config')
-var webpackBaseConfig = require('./webpack.base.conf.js')
-var merge = require('webpack-merge')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var utils = require('./utils')
+const webpack = require('webpack');
+const config = require('../config');
+const webpackBaseConfig = require('./webpack.base.conf.js');
+const merge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const utils = require('./utils');
 
-var env = process.env.NODE_ENV === 'testing'
+const env = process.env.NODE_ENV === 'testing'
     ? require('../config/test.env')
     : config.build.env
 process.env.NODE_ENV = env.NODE_ENV
@@ -18,30 +20,42 @@ module.exports = merge(webpackBaseConfig, {
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-                use: ['css-loader', 'postcss-loader' ,'sass-loader']
+                use: ['css-loader', 'postcss-loader']
             })
         }]
     },
+    mode: 'production',
     devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
-        path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/[name].[hash].js'),
-        publicPath: config.build.assetsPublicPath
+      path: config.build.assetsRoot,
+      filename: utils.assetsPath('js/[name].[hash].js'),
+      publicPath: config.build.assetsPublicPath
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new UglifyJsPlugin({
+          test: /\.js($|\?)/i,
+          extractComments: true,
+        })
+      ],
+      runtimeChunk: {
+        name: 'manifest',
+      }
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: false,
-            }
-        }),
         new ExtractTextPlugin({
-            filename: utils.assetsPath('css/main.[hash].css')
+          filename: utils.assetsPath('css/main.[hash].css')
+        }),
+        new WorkboxPlugin.GenerateSW({
+          clientsClaim: true,
+          skipWaiting: true,
+          exclude: [/\.map$/],
         }),
         new OptimizeCSSPlugin({
-            cssProcessorOptions: {
-                safe: true
-            }
+          cssProcessorOptions: {
+            safe: true
+          }
         })
     ]
 })

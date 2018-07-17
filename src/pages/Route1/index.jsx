@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition,Transition } from 'react-transition-group';
 import cx from 'classnames';
 
 
@@ -10,6 +10,11 @@ import Animation from 'components/Animation';
 import { showLoading, getBook } from '../../stores/actions';
 import './index.scss';
 
+
+const transtionStyles = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
+}
 class Route1 extends Component {
   static propTypes = {
     // showLoading: PropTypes.func.isRequired,
@@ -31,7 +36,14 @@ class Route1 extends Component {
       this.setState({
         data: res.data
       })
-    })
+    });
+    const arr = [1, 2, 3];
+    const a = arr.find((item) => {
+      return item === 1;
+    });
+    console.log('====================================');
+    console.log(Array.prototype);
+    console.log('====================================');
   }
   toggleLoading = () => {
     // console.log(this.props)
@@ -70,6 +82,16 @@ class Route1 extends Component {
               </div>
           )}}
         </CSSTransition>
+        <Transition in={this.state.in} timeout={150}>
+          {(state) => (
+            <div style={{
+              ...transtionStyles[state]
+            }}
+            >
+              hahah
+            </div>
+          )}
+        </Transition>
         <button onClick={this.toggleEnterState}>Click to Enter</button>
       </div>
     )

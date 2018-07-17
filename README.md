@@ -20,6 +20,8 @@ const Promise = require('babel-runtime/core-js/promise')
 
 而且需要注意的是，这个插件没有在全局变量上插入Promise、Symbol之类的保留字，而是用其他的变量引用，然后通过一个函数返回引用。这样我们就可以引用其他的库，而不会导致代码冲突。(其他引入的库可能污染全局或者prototype)
 
+值得注意的是，babel-runtime是不支持内置对象原型上的方法转换的，所以还是需要引入core-js.js，这样的babel-runtime+core-js方案，比引入polyfill代码量要少。
+
 #### babel-preset-env插件
 
 这里使用这个插件而不是es2015，es2017之类的，是因为babel官方也开始推荐babel-preset-env插件，而开始不继续维护es20XX库。这个库通过配置，按需加载plugin和polyfill，其实也会引用es2015，es2017的插件，不过是按需加载。
@@ -40,6 +42,8 @@ modules: 指定模块类型，譬如AMD，CMD，CommonJS，这里讲modules设�
         "react"
     ],
 ```
+
+在这里，preset-env不设置自动引入babel-polyfill，因为这个包比使用runtime要更大一点，我们直接引入core-js.js解决include数组之类的问题，然后runtime会去做regenerator-runtime的粘合.
 
 #### babel-preset-react插件
 

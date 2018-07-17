@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-// import { CSSTransition } from 'react-transition-group';
 // import PropTypes from 'prop-types';
 import routerProps from '../../../utils/routerProps';
 
-import Transition from '../../../components/Transition/Transition';
+// import Transition from '../../../components/Transition/Transition';
 
 
 import './index.scss';
@@ -140,43 +139,41 @@ export default class PWAPage extends Component {
 
   render() {
     return (
-      <Transition>
-        <div className="PWA-page">
-          <div className="app app__layout">
-            <header>
-              <span className="header__icon">
-                <svg className="menu__icon no--select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
-                  <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
-                </svg>
-              </span>
-              <span className="header__title no--select">{this.state.title}</span>
-            </header>
-            <div className="menu">
-              <div className="menu__header"></div>
-              <ul className="menu__list">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/route1">Latest</NavLink></li>
-              </ul>
+      <div className="PWA-page">
+        <div className="app app__layout">
+          <header>
+            <span className="header__icon">
+              <svg className="menu__icon no--select" width="24px" height="24px" viewBox="0 0 48 48" fill="#fff">
+                <path d="M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z"></path>
+              </svg>
+            </span>
+            <span className="header__title no--select">{this.state.title}</span>
+          </header>
+          <div className="menu">
+            <div className="menu__header"></div>
+            <ul className="menu__list">
+              <li><NavLink to="/">首页</NavLink></li>
+              <li><NavLink to="/route1">第2页</NavLink></li>
+            </ul>
+          </div>
+          <div className="menu__overlay"></div>
+          <div className="app__content">
+            <section className="section">
+              <button onClick={() => {
+                this.props.history.go(-1)
+              }}
+              >
+              返回Name1
+              </button>
+              <p className="home-note"><Link to="/route2/name1">Name1</Link></p>
+            </section>
+            <div className="fab fab__push">
+              <div className="fab__ripple"></div>
             </div>
-            <div className="menu__overlay"></div>
-            <div className="app__content">
-              <section className="section">
-                <button onClick={() => {
-                  this.props.history.go(-1)
-                }}
-                >
-                返回Name1
-                </button>
-                <p className="home-note"><Link to="/route2/name1">Name1</Link></p>
-              </section>
-              <div className="fab fab__push">
-                <div className="fab__ripple"></div>
-              </div>
-              <div className="toast__container"></div>
-            </div>
+            <div className="toast__container"></div>
           </div>
         </div>
-      </Transition>
+      </div>
     )
   }
 };

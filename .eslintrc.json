@@ -19,6 +19,7 @@
     }],
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/anchor-is-valid": "off",
+    "react/jsx-filename-extension": "off",
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "react/self-closing-comp": "off",
@@ -26,7 +27,8 @@
     "no-plusplus": "off",
     "no-unused-expressions": ["error", {"allowShortCircuit": true}],
     "no-underscore-dangle": "off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "global-require": "off"
   },
   "ecmaFeatures": {
     "destructuring": true,

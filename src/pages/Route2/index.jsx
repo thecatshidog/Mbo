@@ -8,12 +8,12 @@ import './index.scss';
 export default class Route2 extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
 
   componentDidMount() {
   }
-
 
   render() {
     return (

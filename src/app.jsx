@@ -1,27 +1,41 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import { hot } from 'react-hot-loader';
 import reducer from './stores/reducers';
 
 import Routes from './routes';
 import './styles/app.scss';
 
-const middleware = [ thunk ];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger())
+
+function configureStore() {
+  const middlewares = [ thunk ];
+  // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+  //   shouldHotReload: false
+  // }) : compose;
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger());
+  }
+  const store = createStore(reducer, applyMiddleware(...middlewares));
+  if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+      module.hot.accept('./stores/reducers', () => {
+        const nextRootReducer = require('./stores/reducers');
+        store.replaceReducer(nextRootReducer);
+      })
+    }
+  }
+
+  return store;
 }
 
-const store = createStore(reducer, applyMiddleware(...middleware));
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={configureStore()}>
     <Routes />
   </Provider>
 );
 
-export default App;
-
-ReactDOM.render(<App />, document.getElementById('app'));
+export default hot(module)(App);
